@@ -13,7 +13,7 @@ function App() {
   }, [])
 
   const fetchItems = async () => {
-    const response = await fetch('http://localhost:8080/api/items');
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/items`);
     const data = await response.json();
     setItems(data);
   };
@@ -23,7 +23,7 @@ function App() {
       return;
     }
     const item = { name };
-    const response = await fetch('http://localhost:8080/api/items', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/items`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
